@@ -517,7 +517,7 @@
                       <!-- Dropdown unit -->
                            <?php
                             
-                            $ds = $this->db->get('tb_status') ;
+                            $ds = $this->db->get('tb_status');
 
                               foreach ($ds->result() as $s)
                                 {  $kode=$s->id_status;
@@ -544,15 +544,15 @@
                         <label for="basic" class="control-label col-xs-3" >Petugas</label>
                         <div class="col-xs-8">
                           <select id="basic" name="petugas" class="selectpicker show-tick form-control" data-live-search="true" required>
-                          <?                    
+                          <?php                    
                             $pet1 = $this->db->get_where('tb_petugas', array('id_petugas' => $pet)) ;
-
                               foreach ($pet1->result() as $t)
                                 {  $kode1=$t->id_petugas;
                                    $nama1=$t->nama_petugas;
                           ?>
                           <option data-subtext="" value="<?php echo $kode1;?>"><?php echo $nama1 ;?></option>
-                        <?php } ?>
+                        <?php  }  
+                        ?>
 
                       <!-- Dropdown unit -->
                            <?php
@@ -579,7 +579,8 @@
           </div>
         </div>
       </div> </div>   
-       <?php endforeach;  } ?>
+       <?php endforeach; 
+      } ?>
 <!--END MODAL RESPONS AMPRAH-->
 
 <!-- ============ MODAL HAPUS det =============== -->
@@ -631,7 +632,8 @@
             </div>
             </div>
         </div>
-        <?php endforeach; } ?>
+        <?php endforeach; 
+      } ?>
 <!-- END MODAL HAPUS det -->
 
 <!-- ============ MODAL HAPUS amprah =============== -->

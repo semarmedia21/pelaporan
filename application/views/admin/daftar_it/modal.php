@@ -1,10 +1,8 @@
 <?php 
 
 foreach($data->result_array() as $d):
- {
     $idreq = $d['reqno'];
-  }
-       ?>
+?>
       
     <div class="modal fade" id="modal_show_det<?php echo $idreq;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -39,12 +37,14 @@ foreach($data->result_array() as $d):
                                         <th><center>Petugas</center></th>
                                      
                                       <?php if(isset($aks)=='1'){ ?>
-                                        <th><center>Action</center></th> <? } ?>
+                                        <th><center>Action</center></th> <?php } ?>
                                     </tr>
                                 </thead>
                         
                              <?php 
-                           foreach($damp->result_array() as $i):
+                           foreach($damp->result_array() as $i){
+
+                          
                                     $no=$i['id'];
                                     $id=$i['reqno'];
                                     $ku=$i['kode_p'];
@@ -80,7 +80,8 @@ foreach($data->result_array() as $d):
                                          Selesai
                                         </span>
                                    </a> 
-                               <?php } ?>
+                               <?php }
+                                } ?>
                                   
                                 </td>
                                 <td><?php echo $sres;?></td>
@@ -89,23 +90,19 @@ foreach($data->result_array() as $d):
                 <?php if(isset($aks)=='1'){ ?>
                     <td width="100">
                       <a  href="<?php echo base_url().'index.php/admin/req?reqno='.$id.'&ku='.$ku?>"  class="fas fa-user-check btn-success btn-circle  "></a>
-                    <!-- <a class="btn btn-small text-secondary" data-popup="tooltip" title="Edit Data" data-placement="top" data-toggle="modal" data-target="#modal_respons<?php echo $no;?>"> <i class="fas fa-edit"></i></a> -->
-
-                  <!--   <a class="btn btn-small text-danger" data-popup="tooltip" title="Hapus Data" data-placement="top" data-toggle="modal" data-target="#modal_hapus<?php echo $no;?>"> <i class="fas fa-trash"></i></a> -->
-                         </td>   
-                         <?}?>
+                    </td>   
+                         <?php }?>
                          </tr>
-
-                             <?php endforeach;?>
                                      </tbody>
                                 </table>
                             </div>
                         </div>
-             
-            </div>
+                        </div>
             </div>
         </div> 
-    <?php endforeach ?>
+<?php endforeach;?>
+            
+  
 
 <!--lihat-->
 
@@ -183,9 +180,7 @@ foreach($data->result_array() as $d):
                                    $nama=$tabel->mstatus;
                                 ?>
                                 <option data-subtext="<?php echo $kode; ?>" value="<?php echo $kode; ?>"><?php echo $nama; ?></option>";
-                             <?php }
-                          ?>
-
+                             <?php }?>
                          </select>
                         </div>
                 
@@ -201,4 +196,3 @@ foreach($data->result_array() as $d):
             </div>
         </div>
         <?php endforeach;?>
-<!--UPDATE STATUS -->
