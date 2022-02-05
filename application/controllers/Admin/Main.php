@@ -13,7 +13,8 @@ class Main extends CI_Controller {
         // load view admin/main.php
         $x['grafik'] = $this->Main_model->laporanTahunan();
         $x['petugas'] = $this->Main_model->index_petugas();
-        $x['task'] = $this->Main_model->pekerjaan();
+        $x['task'] = $this->Main_model->pekerjaan_2021();
+        $x['task2'] = $this->Main_model->pekerjaan_2022();
         $x['data_u']=$this->User_model->show_user();
         $x['ses_nama']=$this->session->userdata('nama');
         $x['aks']=$this->session->userdata('akses');

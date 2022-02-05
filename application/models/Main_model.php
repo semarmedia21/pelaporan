@@ -26,7 +26,6 @@ class Main_model extends CI_Model{
         IFNULL((SELECT COUNT(reqno) FROM (tb_amprah)WHERE((MONTH(tanggal_req)=12)AND (YEAR(tanggal_req)=2021))),0) AS `Desember`
         FROM tb_amprah GROUP BY YEAR(tanggal_req)
         ");
-  
   return $bc;
   
  }
@@ -38,19 +37,12 @@ class Main_model extends CI_Model{
     $this->db->FROM('tb_det_amprah');
     $this->db->JOIN('tb_petugas', 'tb_det_amprah.`petugas` = tb_petugas.`id_petugas`');
     $this->db->order_by('id_petugas', 'ASC');
-    $query = $this->db
-            ->get()
-            ->result();
-
-    // $query=$this->db->query("SELECT tb_petugas.`nama_petugas` , COUNT(petugas) AS total FROM tb_det_amprah 
-    //   INNER JOIN tb_petugas
-    //   ON tb_det_amprah.`petugas` = tb_petugas.`id_petugas`
-    //   GROUP BY tb_petugas.`nama_petugas`");
-
+    // $this->db->WHERE(YEAR('tb_det_amprah.`tgl_req`'),'2021');
+    $query = $this->db->get()->result();
     return $query;
   }
 
-  function pekerjaan(){
+  function pekerjaan_2021(){
     $que = $this->db->query("SELECT nama_petugas, 
     COUNT(IF(jp = 'SIM-IT', 1, NULL)) 'simrs',
     COUNT(IF(jp = 'HD-IT', 1, NULL)) 'hardware',
@@ -64,6 +56,27 @@ class Main_model extends CI_Model{
     FROM tb_det_amprah 
     INNER JOIN tb_petugas
     ON tb_det_amprah.`petugas` = tb_petugas.`id_petugas` 
+    WHERE YEAR(tb_det_amprah.`tgl_req`) ='2021'
+    GROUP BY nama_petugas ORDER BY id_petugas ASC");
+
+    return $que;
+  }
+
+  function pekerjaan_2022(){
+    $que = $this->db->query("SELECT nama_petugas, 
+    COUNT(IF(jp = 'SIM-IT', 1, NULL)) 'simrs',
+    COUNT(IF(jp = 'HD-IT', 1, NULL)) 'hardware',
+    COUNT(IF(jp = 'JR-IT', 1, NULL)) 'jaringan',
+    COUNT(IF(jp = 'DR-IT', 1, NULL)) 'daring',
+    COUNT(IF(jp = 'MS-IT', 1, NULL)) 'software',
+    COUNT(IF(jp = 'VID-IT', 1, NULL)) 'vidio',
+    COUNT(IF(jp = 'DT', 1, NULL)) 'data',
+    COUNT(jp) 'total'
+
+    FROM tb_det_amprah 
+    INNER JOIN tb_petugas
+    ON tb_det_amprah.`petugas` = tb_petugas.`id_petugas` 
+    WHERE YEAR(tb_det_amprah.`tgl_req`) ='2022'
     GROUP BY nama_petugas ORDER BY id_petugas ASC");
 
     return $que;

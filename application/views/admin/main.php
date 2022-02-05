@@ -77,6 +77,7 @@
      <?php $this->load->view("admin/2022.php")?>
     <?php $this->load->view("admin/pie_chart.php")?> 
      <?php $this->load->view("admin/idx_petugas.php")?> 
+     <?php $this->load->view("admin/idx_petugas_22.php")?> 
 
       <script type = "text/JavaScript">
          <!--

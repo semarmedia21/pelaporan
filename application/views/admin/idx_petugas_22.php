@@ -3,7 +3,7 @@
 $nama_petugas= "";
 $jumlah = $jumlah_sim = $jumlah_jar = $jumlah_soft = $jumlah_hard = $jumlah_dar =$jumlah_vid = $jumlah_data = null;
 
- foreach ($task->result_array() as $i)
+ foreach ($task2->result_array() as $i)
  {
   $pet=$i['nama_petugas'];
   $nama_petugas .= "'$pet'". ", ";
@@ -37,7 +37,7 @@ $jumlah = $jumlah_sim = $jumlah_jar = $jumlah_soft = $jumlah_hard = $jumlah_dar 
   Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
   Chart.defaults.global.defaultFontColor = '#858796';
 
-    var ctx = document.getElementById('myBar21').getContext('2d');
+    var ctx = document.getElementById('myBar22').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'bar',
@@ -140,3 +140,4 @@ $jumlah = $jumlah_sim = $jumlah_jar = $jumlah_soft = $jumlah_hard = $jumlah_dar 
         }
     });
 </script>
+

@@ -34,12 +34,10 @@
                                                 Total Permintaan Masuk</div>
                                             <div class="h3 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                            
-                                            // $this->db->where('reqno', $reqno);
-                                            $this->db->from('tb_amprah');
-                                            $cnt = $this->db->count_all_results();
-                                            echo $cnt ;
-
+                                                // $this->db->where('reqno', $reqno);
+                                                $this->db->from('tb_amprah');
+                                                $cnt = $this->db->count_all_results();
+                                                echo $cnt ;
                                                 ?>
                                             </div>
                                         </div>
@@ -60,14 +58,11 @@
                                             <div class="text-s font-weight-bold text-info text-uppercase mb-1">Total Permintaan Selesai
                                             </div>
                                             <div class="h3 mb-0 font-weight-bold text-gray-800"> <?php
-                                         
                                             $this->db->where('status', '3');
                                             $this->db->from('tb_amprah');
                                             $cnt = $this->db->count_all_results();
                                             echo $cnt ;
-
                                             ?>
-                                                
                                          </div>
                                         </div>
                                         <div class="col-auto">
@@ -86,13 +81,12 @@
                                             <div class="text-s font-weight-bold text-warning text-uppercase mb-1">
                                                 Total Permintaan Dalam Proses</div>
                                             <div class="h3 mb-0 font-weight-bold text-gray-800">
-                                                <?php
-                                                            
-                        $this->db->select('*');
-                        $this->db->from("tb_det_amprah");
-                        $this->db->join('tb_amprah', "tb_amprah.reqno = tb_det_amprah.reqno");
-                        $this->db->where('tb_amprah.status', '2');
-                        $cnt  = $this->db->count_all_results();
+                                                <?php     
+                                                    $this->db->select('*');
+                                                    $this->db->from("tb_det_amprah");
+                                                    $this->db->join('tb_amprah', "tb_amprah.reqno = tb_det_amprah.reqno");
+                                                    $this->db->where('tb_amprah.status', '2');
+                                                    $cnt  = $this->db->count_all_results();
                                                     echo $cnt ;
                                                 ?>
 
@@ -117,12 +111,10 @@
                                                 Total Item Permintaan</div>
                                             <div class="h3 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                          
-                                            $this->db->from('tb_det_amprah');
-                                            $cnt = $this->db->count_all_results();
-                                            echo $cnt ;
+                                                $this->db->from('tb_det_amprah');
+                                                $cnt = $this->db->count_all_results();
+                                                echo $cnt ;
                                                 ?>
-
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -142,13 +134,13 @@
                                                 Total Item Selesai</div>
                                             <div class="h3 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                            
-                        $this->db->select('*');
-                        $this->db->from("tb_det_amprah");
-                        $this->db->join('tb_amprah', "tb_amprah.reqno = tb_det_amprah.reqno");
-                        $this->db->where('tb_amprah.status', '3');
-                        $cnt  = $this->db->count_all_results();
-                                                    echo $cnt ;
+                                                                                    
+                                                $this->db->select('*');
+                                                $this->db->from("tb_det_amprah");
+                                                $this->db->join('tb_amprah', "tb_amprah.reqno = tb_det_amprah.reqno");
+                                                $this->db->where('tb_amprah.status', '3');
+                                                $cnt  = $this->db->count_all_results();
+                                                                            echo $cnt ;
                                                 ?>
 
                                             </div>
@@ -259,11 +251,8 @@
                                     </div>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myBar"></canvas>
-                                   
-                                    </div>
+                                <div class="card-body">                                    
+                                    <?php $this->load->view('admin/pills_idx.php') ?>
                                 </div>
                             </div>
                         </div>
