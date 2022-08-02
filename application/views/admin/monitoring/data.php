@@ -8,6 +8,7 @@
                                     <tr>
                                         <th><center></center></th>
                                         <th><center>Tanggal</center></th>
+                                        <th><center>Unit/Ruangan</center></th>
                                         <th><center>Monitoring Software</center></th>
                                         <th><center>Monitoring Hardware</center></th>
                                         <th><center>Monitoring Jaringan</center></th>
@@ -31,11 +32,14 @@
                                     $q3=$i['q3'];
                                     $jar=$i['mon_jar'];
                                     $sjar=$i['sol_jar'];
+
+                                    $kr=$i['kode_r'];
+                                    $nr=$i['nama_ruang'];
                               ?>
                             <tr>
-                              <td width="5"></td>
+                                <td width="5"></td>
                                 <td width="100"><?php echo $tgl;?></td>
-
+                                <td width="100"><?php echo $nr;?></td>
                                 <td width="250"><?php echo $q1 ?> <hr> 
                                   <?php if($q1 == 'Terdapat masalah / kendala') { ?>
                                   Masalah  : <?php echo $soft; ?><hr> 

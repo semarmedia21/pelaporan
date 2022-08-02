@@ -28,6 +28,8 @@
 
 <script src="<?php echo base_url('assets/select-js/bootstrap-select.js') ?>"></script>
 
+
+
 <script type="text/javascript">
   $(document).ready(function() {
     $("#show_hide_password a").on('click', function(event) {
@@ -42,24 +44,9 @@
             $('#show_hide_password i').addClass( "fa-eye" );
         }
     });
-
-    //  $("#tt_isi, #tt_tot").on('input', function(event) {
-    //     event.preventDefault();
-    //     if($('#tt_isi').val() == "0"){
-    //         var bed = parseInt($('#tt_tot').val());
-    //         var isi = parseInt($('#tt_isi').val());
-    //         $('#tt_sisa').val(bed - isi);
-    //     }else{
-    //         var bed = parseInt($('#tt_tot').val());
-    //         var isi = parseInt($('#tt_isi').val());
-    //         $('#tt_sisa').val(bed - isi);
-    //     }
-    // });
 });
 
-</script>
 
-<script>
     $('.select2').select2();
 
 
@@ -68,11 +55,18 @@
         maxOptions: 1
         });
 
-</script>
+$(document).ready(function(){
+  $("#datepicker").datepicker({
+     format: "yyyy",
+     viewMode: "years", 
+     minViewMode: "years",
+     autoclose:true
+  });   
+})
 
-    <script type="text/javascript">
-    $('#notifikasi').slideDown('slow').delay(5000).slideUp('slow');
-    </script>
+
+$('#notifikasi').slideDown('slow').delay(5000).slideUp('slow');
+</script>
 
 
 

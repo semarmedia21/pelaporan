@@ -31,7 +31,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Daftar Permintaan</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Rekap Permintaan Bualanan</h1>
 
                         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
@@ -51,6 +51,8 @@
                     <div class="form-group">
                        <div class="input-group col-sm-5">
                           <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+
+                          
                           <input type="month" id="vtanggal" name="bulan" class="form-control">
                           <span class="input-group-btn">
                           <button id="tampil" class="btn btn-success" type="button"><i class="fa fa-search fa-fw"></i> Tampil</button>
@@ -102,6 +104,8 @@
     ====================================================================== -->
     <!-- Bootstrap core JavaScript-->
 <?php $this->load->view("admin/_partials/js.php")?>
+
+
 <script>
    $(function(){
     $("#tampil").click(function(){

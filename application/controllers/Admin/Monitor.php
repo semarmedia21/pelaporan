@@ -6,6 +6,7 @@ class Monitor extends CI_Controller {
 		parent::__construct();
         $this->load->model('User_model');
         $this->load->model('Monitor_model');
+        $this->load->model('Req_model');
 	}
 
 	public function index()
@@ -16,6 +17,7 @@ class Monitor extends CI_Controller {
         $x['aks']=$this->session->userdata('akses');
         $x['ses_id']=$this->session->userdata('id');
         $x['mon']=$this->Monitor_model->data();
+        $x['dr']= $this->Req_model->dd_ruang();
         $this->load->view('admin/monitoring/overview',$x);
 	}
 
@@ -29,7 +31,7 @@ class Monitor extends CI_Controller {
 
         }else{
                 $tgl = $this->input->post('tgl');
-
+                $kr = $this->input->post('kode_r');
                 $qs1 = $this->input->post('softsel');
                 if ($qs1 =='ya') {
                     $Q1 ='Terdapat masalah / kendala';
@@ -106,7 +108,8 @@ class Monitor extends CI_Controller {
             $shard,
             $Q3,
             $jar,
-            $sjar);
+            $sjar,
+            $kr);
         $this->session->set_flashdata('sukses',"Data Berhasil Disimpan");
         redirect('Admin/Monitor/');
         }
@@ -123,7 +126,7 @@ class Monitor extends CI_Controller {
         }else{
                 $id = $this->input->post('id');
                 $tgl = $this->input->post('tgl');
-
+                $kr = $this->input->post('kode_r');
                 $qs1 = $this->input->post('softsel');
                 if ($qs1 =='ya') {
                     $Q1 ='Terdapat masalah / kendala';
@@ -201,7 +204,8 @@ class Monitor extends CI_Controller {
             $shard,
             $Q3,
             $jar,
-            $sjar);
+            $sjar,
+            $kr);
         $this->session->set_flashdata('sukses',"Data Berhasil Disimpan");
         redirect('Admin/Monitor/');
         }
@@ -390,6 +394,7 @@ class Monitor extends CI_Controller {
         $s_jar=$data->sol_jar;
       $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $qu1);
       $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $m_soft);
+      
       $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $s_soft);
       $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $qu2);
       $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $m_hard);

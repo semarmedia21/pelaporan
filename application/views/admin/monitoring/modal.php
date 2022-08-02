@@ -38,6 +38,9 @@ $(document).ready(function() {
         foreach($mon->result_array() as $i):
             $id=$i['id'];
             $tgl=$i['tanggal'];
+            $kr=$i['kode_r'];
+            $nr=$i['nama_ruang'];
+
 
             $q1=$i['q1'];
             $soft=$i['mon_soft'];
@@ -50,6 +53,8 @@ $(document).ready(function() {
             $q3=$i['q3'];
             $jar=$i['mon_jar'];
             $sjar=$i['sol_jar'];
+
+            $kr=$i['kode_r'];
 
             if ($q1 == 'Terdapat masalah / kendala') {
                 $code = 'ya';
@@ -96,6 +101,26 @@ $(document).ready(function() {
 
                             <input type="date" class="form-control" name="tgl" value="<?php echo $tgl;?>"  required>
                         </div>
+                     </div>
+                     <hr> 
+
+                     <div class="form-group">
+                        <label class="control-label col-md-3" ><b>Unit/Ruangan</b></label>
+                        <div class="col-lg-12">
+                        <select id="basic" name="kode_r" class="selectpicker show-tick form-control" data-live-search="true" required>
+                          
+                          <option data-subtext="<?php echo $kr; ?>" value="<?php echo $kr; ?>"><?php echo $nr; ?></option>";
+                      <!-- Dropdown unit -->
+                           <?php
+                              foreach ($dr->result() as $tabel)
+                                {  $kode=$tabel->kode_r;
+                                   $nama=$tabel->nama_ruang;
+                                ?>
+                                <option data-subtext="<?php echo $nama; ?>" value="<?php echo $kode; ?>"><?php echo $nama; ?></option>";
+                             <?php }
+                          ?>
+                         </select> 
+                      </div>
                      </div>
                      <hr> 
 

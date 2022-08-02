@@ -3,7 +3,7 @@ class Monitor_model extends CI_Model{
 
      
 
-    public function insert_mon2($tgl,$Q1,$soft,$ssoft,$Q2,$hard,$shard,$Q3,$jar,$sjar) {  
+    public function insert_mon2($tgl,$Q1,$soft,$ssoft,$Q2,$hard,$shard,$Q3,$jar,$sjar,$kr) {  
        
           $hasil=$this->db->query("
             INSERT INTO tb_monitoring 
@@ -17,13 +17,16 @@ class Monitor_model extends CI_Model{
             '$shard',
             '$Q3',
             '$jar',
-            '$sjar')");
+            '$sjar',
+            '$kr')");
 
           return $hasil;
         }
 
     public function data(){
-       $mon = $this->db->query("SELECT * FROM tb_monitoring order by tanggal DESC");
+       $mon = $this->db->query("SELECT * FROM tb_monitoring 
+       left join tb_ruang on tb_monitoring.kode_r = tb_ruang.kode_ruang
+       order by tanggal DESC");
        return $mon;
     }
     // public function data_baru(){
@@ -39,7 +42,7 @@ class Monitor_model extends CI_Model{
     //    return $mon;
     // }
 
-    public function edit_mon2($id,$tgl,$Q1,$soft,$ssoft,$Q2,$hard,$shard,$Q3,$jar,$sjar) {  
+    public function edit_mon2($id,$tgl,$Q1,$soft,$ssoft,$Q2,$hard,$shard,$Q3,$jar,$sjar,$kr) {  
        
           $hasil=$this->db->query("
             UPDATE tb_monitoring 
@@ -53,9 +56,9 @@ class Monitor_model extends CI_Model{
             sol_hard = '$shard',
             q3 = '$Q3',
             mon_jar = '$jar',
-            sol_jar = '$sjar'
+            sol_jar = '$sjar',
+            kode_r = '$kr'
            WHERE id ='$id'
-
             ");
 
           return $hasil;

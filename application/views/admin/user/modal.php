@@ -56,14 +56,14 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Akses</label>
                         <div class="col-xs-8">
-                            <input name="akses" value="" class="form-control" type="text" placeholder="" required>
+                            <input name="akses" value="" class="form-control" type="text" placeholder="" required >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Unit</label>
                         <div class="col-xs-8">
-                            <input name="unit" value="" class="form-control" type="text" placeholder="" required>
+                            <input name="unit" value="" class="form-control" type="text" placeholder="" required >
                         </div>
                     </div>
 
@@ -158,14 +158,14 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Akses</label>
                         <div class="col-xs-8">
-                            <input name="akses" value="<?php echo $akses;?>" class="form-control" type="text" placeholder="" required>
+                            <input name="akses" value="<?php echo $akses;?>" class="form-control" type="text" placeholder="" required >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >Unit</label>
                         <div class="col-xs-8">
-                            <input name="unit" value="<?php echo $unit;?>" class="form-control" type="text" placeholder="" required>
+                            <input name="unit" value="<?php echo $unit;?>" class="form-control" type="text" placeholder="" required >
                         </div>
                     </div>
                 </div>

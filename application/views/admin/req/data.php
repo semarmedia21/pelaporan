@@ -80,14 +80,15 @@ $this->db->where('reqno', $idreq);
                                 <td><?php echo $pet;?></td>
                                 
                     <td >
-
+                    <?php if(in_array($aks, array('','8'))){ ?>
                     <a class="btn btn-small text-secondary" data-popup="tooltip" title="Edit Data" data-placement="top" data-toggle="modal" data-target="#modal_edit_det<?php echo $no;?>"> <i class="fas fa-edit"></i> Edit</a>
 
                     <a class="btn btn-small text-danger" data-popup="tooltip" title="Hapus Data" data-placement="top" data-toggle="modal" data-target="#modal_hapus_det<?php echo $no;?>"> <i class="fas fa-trash"></i> Hapus</a>
-
-                    <?  if(isset($aks)=='1'){ ?>
+                    <?php } ?>
+                    
+                    <?php if(in_array($aks, array('6','8'))){ ?>
                      <a class="btn btn-small text-success" data-popup="tooltip" title="Respons" data-placement="top" data-toggle="modal" data-target="#modal_respons<?php echo $no;?>"> <i class="fas fa-check"></i> Response</a>
-                   <? } ?>
+                   <?php } ?>
                          </td>   
 
                          </tr>

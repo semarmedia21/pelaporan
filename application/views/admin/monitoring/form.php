@@ -2,12 +2,29 @@
 
       <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/Admin/Monitor/simpan_mon'?>">
                 <div class="modal-body">
-
                    <div class="form-group">
                         <label class="control-label col-xs-3" ><b>Tanggal</b></label>
                         <div class="col-sm-4">
                             <input type="date" class="form-control" name="tgl" value=""  required>
                         </div>
+                     </div>
+                     <hr> <hr>
+
+                     <div class="form-group">
+                        <label class="control-label col-xs-3" ><b>Unit/Ruangan</b></label>
+                        <div class="col-sm-4">
+                        <select id="basic" name="kode_r" class="selectpicker show-tick form-control" data-live-search="true" required>
+                          <option data-subtext="" value="">Pilih</option>
+                            <?php
+                              foreach ($dr->result() as $tabel)
+                                {  $kode=$tabel->kode_ruang;
+                                   $nama=$tabel->nama_ruang;
+                                ?>
+                                <option data-subtext="<?php echo $nama; ?>" value="<?php echo $kode; ?>"><?php echo $nama; ?></option>";
+                             <?php }
+                          ?>
+                         </select>
+                         </div>
                      </div>
                      <hr> <hr>
 
@@ -31,10 +48,8 @@
                         <div class="col-xs-8">
                             <textarea class="form-control" rows="5" cols="50" name ="msoftsol" value="" ></textarea>
                         </div>
-
                     </div>
                     <hr> <hr>
-
                     <div class="form-group">
                         <label for="hardware" class="control-label col-xs-3" ><b>Monitoring Hardware </b></label>
                       <select class="form-control col-sm-4" id='hardware' name='hardsel' required>

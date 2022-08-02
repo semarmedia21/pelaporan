@@ -19302,7 +19302,8 @@ var moment = createCommonjsModule(function (module, exports) {
         TIME_SECONDS: 'HH:mm:ss',                       // <input type="time" step="1" />
         TIME_MS: 'HH:mm:ss.SSS',                        // <input type="time" step="0.001" />
         WEEK: 'GGGG-[W]WW',                             // <input type="week" />
-        MONTH: 'YYYY-MM'                                // <input type="month" />
+        MONTH: 'YYYY-MM',                             // <input type="month" />
+		YEAR: 'YYYY'                                // <input type="year" />
     };
 
     return hooks;

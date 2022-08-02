@@ -20,14 +20,14 @@ class Laporan extends CI_Controller {
         $this->load->view('admin/laporan/overview',$x);
 	}
 
-    function lap_humas(){
+    function lap_thn(){
         $x['lap_amp']=$this->Laporan_model->amprah();
         $x['lap_det_amp']=$this->Laporan_model->det_amprah();
         $x['data_u']=$this->User_model->show_user();
         $x['ses_nama']=$this->session->userdata('nama');
         $x['aks']=$this->session->userdata('akses');
         $x['ses_id']=$this->session->userdata('id');
-        $this->load->view('admin/laporan/overview_hum',$x);
+        $this->load->view('admin/laporan/overview_thn',$x);
     }
 
     function tampil_laporan(){
@@ -36,10 +36,11 @@ class Laporan extends CI_Controller {
     $this->load->view('admin/laporan/tampil_laporan',$data);
     }
 
-     function tampil_laporan_hum(){
+     function tampil_laporan_thn(){
     $vtanggal=$this->input->post('vtanggal');
-    $data['tampil_data']=$this->Laporan_model->tampil_data_hum($vtanggal)->result();
-    $this->load->view('admin/laporan/tampil_laporan',$data);
+    $data['tampil_data']=$this->Laporan_model->tampil_data_thn($vtanggal)->result();
+    $data['tampil_tot']=$this->Laporan_model->tot_data_thn($vtanggal)->result();
+    $this->load->view('admin/laporan/tampil_laporan_thn',$data);
     }
 
     // public function exportPdf() {

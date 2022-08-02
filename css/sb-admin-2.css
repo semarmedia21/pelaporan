@@ -1897,6 +1897,7 @@ pre code {
 }
 
 input[type="date"].form-control,
+input[type="year"].form-control,
 input[type="time"].form-control,
 input[type="datetime-local"].form-control,
 input[type="month"].form-control {
@@ -10824,7 +10825,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("../assets/images/login.jpg");
   background-position: center;
   background-size: cover;
 }

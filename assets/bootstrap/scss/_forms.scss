@@ -62,7 +62,8 @@
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
-input[type="month"] {
+input[type="month"],
+input[type="year"] {
   &.form-control {
     appearance: none; // Fix appearance for date inputs in Safari
   }
