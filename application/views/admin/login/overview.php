@@ -30,11 +30,11 @@
                                         <div class="form-group">
                                             <input type="text" name="user" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Username">
+                                                placeholder="Username" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="pass" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password" required>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary btn-user btn-block">

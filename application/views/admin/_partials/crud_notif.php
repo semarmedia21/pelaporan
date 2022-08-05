@@ -9,3 +9,9 @@
   if($data2!=""){ ?>
   <div id="notifikasi" class="alert alert-danger"><strong> Error! </strong> <?=$data2;?></div>
   <?php } ?>
+
+  <?php 
+  $data2=$this->session->flashdata('gagal');
+  if($data2!=""){ ?>
+  <div id="notifikasi" class="alert alert-danger"><strong> Terjadi kesalahan! </strong> <?=$data2;?></div>
+  <?php } ?>

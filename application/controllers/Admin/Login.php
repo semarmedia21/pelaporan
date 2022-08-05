@@ -40,6 +40,10 @@ class Login extends CI_Controller{
 			echo "Username dan password salah !";
 			echo $username;
 			echo $md;
+
+			$this->session->set_flashdata('gagal',"User atau Password salah");
+
+			redirect("admin/login");
 		}
 	}
  
