@@ -23,14 +23,14 @@ $jumlah = $jumlah_sim = $jumlah_jar = $jumlah_soft = $jumlah_hard = $jumlah_dar 
   $hard=$i['hardware'];
   $jumlah_hard .= "$hard". ", ";
 
-  $dar=$i['daring'];
-  $jumlah_dar .= "$dar". ", ";
+  // $dar=$i['daring'];
+  // $jumlah_dar .= "$dar". ", ";
   
-  $vid=$i['vidio'];
-  $jumlah_vid .= "$vid". ", ";
+  // $vid=$i['vidio'];
+  // $jumlah_vid .= "$vid". ", ";
 
-  $data=$i['data'];
-  $jumlah_data .= "$data". ", ";
+  // $data=$i['data'];
+  // $jumlah_data .= "$data". ", ";
 }
 ?>
 <script>
@@ -72,21 +72,21 @@ $jumlah = $jumlah_sim = $jumlah_jar = $jumlah_soft = $jumlah_hard = $jumlah_dar 
                 backgroundColor: '#36b9cc',
                 data: [<?php echo $jumlah_soft; ?>]
               },
-              {
-                label:'Daring',
-                backgroundColor: '#ffb129',
-                data: [<?php echo $jumlah_dar; ?>]
-              },
-              {
-                label:'Video',
-                backgroundColor: '#ca33ff',
-                data: [<?php echo $jumlah_vid; ?>]
-              },
-              {
-                label:'Data & Informasi',
-                backgroundColor: '#e3037d',
-                data: [<?php echo $jumlah_data; ?>]
-              },
+              // {
+              //   label:'Daring',
+              //   backgroundColor: '#ffb129',
+              //   data: [<?php echo $jumlah_dar; ?>]
+              // },
+              // {
+              //   label:'Video',
+              //   backgroundColor: '#ca33ff',
+              //   data: [<?php echo $jumlah_vid; ?>]
+              // },
+              // {
+              //   label:'Data & Informasi',
+              //   backgroundColor: '#e3037d',
+              //   data: [<?php echo $jumlah_data; ?>]
+              // },
             ],
         },
         // Configuration options go here

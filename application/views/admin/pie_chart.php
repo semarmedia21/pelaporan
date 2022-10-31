@@ -29,10 +29,10 @@
     $this->db->from('tb_det_amprah');
     $dar1 = $this->db->count_all_results();
 
-    $this->db->from('tb_daring');
-    $dar2 = $this->db->count_all_results();
+    // $this->db->from('tb_daring');
+    // $dar2 = $this->db->count_all_results();
 
-    $dar= $dar1+$dar2;
+    $dar= $dar1;
 
 ?>
 
@@ -49,22 +49,16 @@ var myPieChart = new Chart(ctx, {
     labels: ["SIMRS", 
     "HARDWARE", 
     "JARINGAN", 
-    "SOFTWARE", 
-    "DARING", 
-    "DOK.VIDEO", 
-    "DATA & INFORMASI" ],
+    "SOFTWARE" ],
 
     datasets: [{
       data: [
                     <?php echo $sim ?> , 
                     <?php echo $hard ?>, 
                     <?php echo $jr ?>,
-                    <?php echo $sw ?>,
-                    <?php echo $dar ?>,
-                    <?php echo $vid ?>,
-                    <?php echo $data ?>],
+                    <?php echo $sw ?>],
 
-      backgroundColor: ['#4e73df', '#1cc88a', '#e74a3b', '#36b9cc', '#ffb129','#ca33ff', '#e3037d'],
+      backgroundColor: ['#4e73df', '#1cc88a', '#e74a3b', '#36b9cc'],
       // hoverBackgroundColor: ['#2e59d9', '#17a673', '#e74a3b','#2c9faf', '#2e59d9', '#17a673'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],

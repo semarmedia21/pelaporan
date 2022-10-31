@@ -216,18 +216,7 @@
                                         <span class="mr-2">
                                             <i class="fas fa-circle text-info"></i> SOFTWARE
                                         </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-warning"></i> DARING
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#ca33ff;"
-                                            ></i> DOK VIDIO
-                                        </span>
-
-                                         <span class="mr-2">
-                                            <i class="fas fa-circle" style="color:#e3037d;"
-                                            ></i> DATA & INFORMASI
-                                        </span>
+                                     
                                     </div>
                                 </div>
                             </div>
