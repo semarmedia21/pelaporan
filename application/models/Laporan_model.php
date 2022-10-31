@@ -28,8 +28,9 @@ class Laporan_model extends CI_Model{
   }  
 
   function tampil_data_thn($vtanggal){
-      $vbulan = date("m",strtotime($vtanggal));
-      $vtahun = date("Y",strtotime($vtanggal));
+      // $vbulan = date("m",strtotime($vtanggal));
+      // $vtahun = date("Y",strtotime($vtanggal));
+      $vtahun=$vtanggal;
 
       
       $hasil = $this->db->query( "
@@ -46,9 +47,9 @@ class Laporan_model extends CI_Model{
   }  
 
   function tot_data_thn($vtanggal){
-    $vbulan = date("m",strtotime($vtanggal));
-    $vtahun = date("Y",strtotime($vtanggal));
-
+    // $vbulan = date("m",strtotime($vtanggal));
+    // $vtahun = date("Y",strtotime($vtanggal));
+    $vtahun=$vtanggal;
     
     $hasil = $this->db->query( "
     SELECT 

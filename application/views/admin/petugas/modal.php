@@ -27,7 +27,7 @@
                           <select id="basic" name="kode_p" class="selectpicker show-tick form-control" data-live-search="true" required>
                           
                           <option data-subtext="" value="">Pilih</option>
-                      <!-- Dropdown unit -->
+                            <!-- Dropdown unit -->
                            <?php
                               foreach ($dd->result() as $tabel)
                                 {  $kode=$tabel->kode_p;

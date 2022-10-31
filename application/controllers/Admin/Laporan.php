@@ -43,55 +43,7 @@ class Laporan extends CI_Controller {
     $this->load->view('admin/laporan/tampil_laporan_thn',$data);
     }
 
-    // public function exportPdf() {
-    //         $tgl_awal = date('Y-m-d', strtotime($this->input->post('tanggal_awal')));
-    //         $tgl_akhir = date('Y-m-d', strtotime($this->input->post('tanggal_akhir')));
-    //         $lapamp = $this->Laporan_model->cari2($tgl_awal, $tgl_akhir);
-    //         $tanggal = date('d-m-Y');
-     
-    //         $pdf = new \TCPDF();
-    //         $pdf->AddPage();
-    //         $pdf->SetFont('', 'B', 14);
-    //         $pdf->Cell(115, 0, "Laporan Permintaan IT - ".$tanggal, 0, 1, 'L');
-    //         $pdf->Cell(115, 0, "Tanggal Awal: ".date('d-m-Y', strtotime($this->input->post('tanggal_awal'))), 0, 1, 'L');
-    //         $pdf->Cell(115, 0, "Tanggal Akhir: ".date('d-m-Y', strtotime($this->input->post('tanggal_akhir'))), 0, 1, 'L');
-    //         $pdf->SetAutoPageBreak(true, 0);
-             
-    //         // Add Header
-    //         $pdf->Ln(10);
-    //         $pdf->SetFont('', 'B', 12);
-    //         $pdf->Cell(10, 8, "No", 1, 0, 'C');
-    //         $pdf->Cell(35, 8, "Reqno", 1, 0, 'C');
-    //         $pdf->Cell(35, 8, "Tanggal", 1, 0, 'C');
-    //         $pdf->Cell(35, 8, "Ruang/Unit", 1, 0, 'C');
-    //         $pdf->Cell(50, 8, "Pemohon", 1, 0, 'C');
-    //         $pdf->Cell(50, 8, "Penanggung jawab", 1, 0, 'C');
-    //         $pdf->Cell(35, 8, "Jenis Pekerjaan", 1, 0, 'C');
-    //         $pdf->Cell(50, 8, "Uraian", 1, 0, 'C');
-    //         $pdf->Cell(15, 8, "Status", 1, 1, 'C');
-    //         $pdf->SetFont('', '', 12);
-     
-    //         foreach($lapamp->result_array() as $k => $amprah) {
-    //             $this->addRow($pdf, $k+1, $amprah);
-    //         }
-     
-    //         $tanggal = date('d-m-Y');
-    //         $pdf->Output('Laporan Permintaan IT - '.$tanggal.'.pdf'); 
-    // }
- 
-    // private function addRow($pdf, $no, $amprah) {
- 
-    //     $pdf->Cell(10, 8, $no, 1, 0, 'C');
-    //     $pdf->Cell(35, 8, $amprah['reqno'], 1, 0, '');
-    //     $pdf->Cell(35, 8, date('d-m-Y', strtotime($amprah['tanggal'])), 1, 0, 'C');
-    //     $pdf->Cell(35, 8, $amprah['nama_ruang'], 1, 0, 'C');
-    //     $pdf->Cell(50, 8, $amprah['id_user'], 1, 0, 'C');
-    //     $pdf->Cell(50, 8, $amprah['nama_val'], 1, 0, 'C');
-    //     $pdf->Cell(35, 8, $amprah['nama_jp'], 1, 0, 'C');
-    //     $pdf->Cell(50, 8, $amprah['uraian'], 1, 0, 'C');
-    //     $pdf->Cell(35, 8, $amprah['mstatus'], 1, 1, 'C');
-    //     // $pdf->Cell(15, 8, "Rp. ".number_format($amprah['total'], 2, ',' , '.'), 1, 1, 'L');
-    // }
+   
 
 public function exportXls(){
     // Load plugin PHPExcel nya
@@ -236,7 +188,7 @@ public function exportXls(){
 
 // ================================================================================
   
-  public function exportXls_hum(){
+  public function exportXls_thn(){
     // Load plugin PHPExcel nya
     include APPPATH.'third_party/PHPExcel/PHPExcel.php';
     
@@ -248,7 +200,7 @@ public function exportXls(){
                  ->setLastModifiedBy('My Notes Code')
                  ->setTitle("Data Permintaan")
                  ->setSubject("Amprahan")
-                 ->setDescription("Laporan Total Item Permintaan")
+                 ->setDescription("Laporan Permintaan Tahunan")
                  ->setKeywords("Data amprah");
     // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
     $style_col = array(
@@ -276,7 +228,7 @@ public function exportXls(){
         'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
       )
     );
-    $excel->setActiveSheetIndex(0)->setCellValue('A1', "REKAP LAPORAN PERMINTAAN HUMAS");
+    $excel->setActiveSheetIndex(0)->setCellValue('A1', "REKAP LAPORAN PERMINTAAN PERTAHUN");
     $excel->getActiveSheet()->mergeCells('A1:I1');
     $excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); 
     $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(14); 
@@ -294,46 +246,52 @@ public function exportXls(){
     $excel->getActiveSheet()->getStyle('A3')->getFont()->setSize(14); 
     $excel->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); 
   
-    // Buat header tabel nya pada baris ke 3
+    // Buat header tabel nya pada baris ke 3 =========================================
     $excel->setActiveSheetIndex(0)->setCellValue('A5', "NO"); // Set kolom A3 
-    $excel->setActiveSheetIndex(0)->setCellValue('B5', "REQNO"); // Set kolom B3 
-    $excel->setActiveSheetIndex(0)->setCellValue('C5', "TANGGAL"); // Set kolom 
-    $excel->setActiveSheetIndex(0)->setCellValue('D5', "RUANGAN"); // Set kolom 
-    $excel->setActiveSheetIndex(0)->setCellValue('E5', "PEMOHON"); // Set kolom 
-    $excel->setActiveSheetIndex(0)->setCellValue('F5', "PENANGGUNG JAWAB"); // 
-    $excel->setActiveSheetIndex(0)->setCellValue('G5', "PERIHAL"); // Set kolom D3 
-    $excel->setActiveSheetIndex(0)->setCellValue('H5', "URAIAN"); // Set kolom E3 
-    $excel->setActiveSheetIndex(0)->setCellValue('I5', "STATUS"); // Set kolom F3 
-    $excel->setActiveSheetIndex(0)->setCellValue('J5', "PETUGAS"); // Set kolom F3 
+    $excel->getActiveSheet()->mergeCells('A5:A6');
+    $excel->getActiveSheet()->getStyle('A5')->applyFromArray($style_col);
+
+    $excel->setActiveSheetIndex(0)->setCellValue('B5', "BULAN"); // Set kolom B3
+    $excel->getActiveSheet()->mergeCells('B5:B6');
+    $excel->getActiveSheet()->getStyle('B5')->applyFromArray($style_col);
+
+    $excel->setActiveSheetIndex(0)->setCellValue('C5', "JUMLAH REKAP PERTAHUN"); // Set kolom 
+    $excel->getActiveSheet()->mergeCells('C5:G5');
+    $excel->getActiveSheet()->getStyle('C5:G5')->applyFromArray($style_col);
+ 
+
+    $excel->setActiveSheetIndex(0)->setCellValue('C6', "SIMRS"); // Set kolom 
+    $excel->setActiveSheetIndex(0)->setCellValue('D6', "JARINGAN"); // Set kolom 
+    $excel->setActiveSheetIndex(0)->setCellValue('E6', "HARDWARE"); // 
+    $excel->setActiveSheetIndex(0)->setCellValue('F6', "SOFWARE"); // Set kolom D3 
+    $excel->setActiveSheetIndex(0)->setCellValue('G6', "TOTAL PERBAIKAN"); // Set kolom E3 
+
 
     // Apply style header yang telah kita buat tadi ke masing-masing kolom header
-    $excel->getActiveSheet()->getStyle('A5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('B5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('C5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('D5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('E5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('F5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('G5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('H5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('I5')->applyFromArray($style_col);
-    $excel->getActiveSheet()->getStyle('J5')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('A6')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('B6')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('C6')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('D6')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('E6')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('F6')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('G6')->applyFromArray($style_col);
+
    
-    $vtanggal=$this->input->post('bulan');
-    $lap=$this->Laporan_model->tampil_data_hum($vtanggal)->result();
+    $vtanggal=$this->input->post('vtanggal');
+    $lap=$this->Laporan_model->tampil_data_thn($vtanggal)->result();
+    $tot=$this->Laporan_model->tot_data_thn($vtanggal)->result();
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
-    $numrow = 6; // Set baris pertama untuk isi tabel adalah baris ke 4
+    $numrow = 7; // Set baris pertama untuk isi tabel adalah baris ke 4
     foreach($lap as $data){ // Lakukan looping pada variabel siswa
     // foreach($lapamp as $data){ // Lakukan looping pada variabel siswa
       $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->reqno);
-      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->tanggal_req);
-      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->nama_ruang);
-      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->id_user);
-      $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->nama_val);
-      $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->nama_jp);
-      $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow, $data->uraian);
-      $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow, $data->mstatus);
-      $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data->nama_petugas);
+      $excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $data->bulan);
+      $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $data->SIMRS);
+      $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $data->JAR);
+      $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow, $data->HARD);
+      $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow, $data->SOFT);
+      $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow, $data->total);
+
       
       // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
       $excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -343,35 +301,52 @@ public function exportXls(){
       $excel->getActiveSheet()->getStyle('E'.$numrow)->applyFromArray($style_row);
       $excel->getActiveSheet()->getStyle('F'.$numrow)->applyFromArray($style_row);
       $excel->getActiveSheet()->getStyle('G'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('H'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('I'.$numrow)->applyFromArray($style_row);
-      $excel->getActiveSheet()->getStyle('J'.$numrow)->applyFromArray($style_row);
+
       
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
     }
+    $numrow2= 19;
+    foreach($tot as $data2){ // Lakukan looping pada variabel siswa
+      // foreach($lapamp as $data){ // Lakukan looping pada variabel siswa
+        $excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow2, 'TOTAL PERBAIKAN');
+        $excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow2, $data2->SIMRS);
+        $excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow2, $data2->JAR);
+        $excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow2, $data2->HARD);
+        $excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow2, $data2->SOFT);
+        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow2, $data2->total);
+  
+        
+        // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
+        $excel->getActiveSheet()->getStyle('A'.$numrow2)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('B'.$numrow2)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('C'.$numrow2)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('D'.$numrow2)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('E'.$numrow2)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('F'.$numrow2)->applyFromArray($style_row);
+        $excel->getActiveSheet()->getStyle('G'.$numrow2)->applyFromArray($style_row);
+  
+      }
     // Set width kolom
     $excel->getActiveSheet()->getColumnDimension('A')->setWidth(5); 
-    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(15);
-    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(15); 
+    $excel->getActiveSheet()->getColumnDimension('B')->setWidth(30);
+    $excel->getActiveSheet()->getColumnDimension('C')->setWidth(20); 
     $excel->getActiveSheet()->getColumnDimension('D')->setWidth(20); 
-    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(30); 
-    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(30); 
-    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
-    $excel->getActiveSheet()->getColumnDimension('H')->setWidth(30); 
-    $excel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
-    $excel->getActiveSheet()->getColumnDimension('J')->setWidth(30);  
+    $excel->getActiveSheet()->getColumnDimension('E')->setWidth(20); 
+    $excel->getActiveSheet()->getColumnDimension('F')->setWidth(20); 
+    $excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+
     
     // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
     // Set orientasi kertas jadi LANDSCAPE
     $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
     // Set judul file excel nya
-    $excel->getActiveSheet(0)->setTitle("Laporan Rekap Permintaan");
+    $excel->getActiveSheet(0)->setTitle("Laporan Permintaan Tahunan");
     $excel->setActiveSheetIndex(0);
     // Proses file excel
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment; filename="Laporan Amprah HUMAS '.$tgl.'.xlsx"'); // Set nama file excel nya
+    header('Content-Disposition: attachment; filename="Laporan Amprah Tahunan '.$tgl.'.xlsx"'); // Set nama file excel nya
     header('Cache-Control: max-age=0');
     $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
     $write->save('php://output');

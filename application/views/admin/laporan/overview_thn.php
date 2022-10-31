@@ -51,15 +51,29 @@
 
                         <div class="card-body">
 
-                <form method="post" action="<?php echo base_url().'index.php/Admin/Laporan/exportXls'?>">
+                <form method="post" action="<?php echo base_url().'index.php/Admin/Laporan/exportXls_thn'?>">
                     <div class="form-group">
                        <div class="input-group col-sm-5">
                           <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>&nbsp
 
-                          <br> <input type="month" class="form-control" name="vtanggal" id="vtanggal"> <br>
-                          &nbsp <span class="input-group-btn">
+                          <!-- <br> <input type="month" class="form-control" name="vtanggal" id="vtanggal"> <br>
+                          &nbsp <span class="input-group-btn"> -->
+
+                          <select id="vtanggal" name="vtanggal" class=" form-control" data-live-search="true" required>
+                            <option data-subtext="" value="">Pilih</option>
+                                <?php
+                                    $sql= $this->db->query("SELECT YEAR(tanggal_req) as thn FROM tb_amprah GROUP BY YEAR(tanggal_req) ASC");
+                                    foreach ($sql->result() as $tabel)
+                                        {  $tahun =$tabel->thn;
+                                        ?>
+                                    <option value="<?php echo $tahun; ?>"> <?= $tahun; ?></option>;
+                                    <?php }?>
+                            </select>
+
                           <button id="tampil" class="btn btn-success" type="button"><i class="fa fa-search fa-fw"></i> Tampil</button>
                           </span>
+
+                        
                        </div>
                     </div>
 
